@@ -46,6 +46,19 @@ namespace StarterAssets
         [Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
         public float FallTimeout = 0.15f;
 
+        [Header("Stamina")]
+        [Tooltip("Reference to the HealthBar script for stamina management")]
+        public HealthBar healthBar;
+
+        [Tooltip("Stamina cost per second while running")]
+        public float runStaminaCostPerSecond = 5f;
+
+        [Tooltip("Stamina cost for jumping")]
+        public float jumpStaminaCost = 15f;
+
+        [Tooltip("Stamina recovery per second when idle")]
+        public float staminaRecoveryPerSecond = 8f;
+
         [Header("Player Grounded")]
         [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
         public bool Grounded = true;
@@ -90,6 +103,9 @@ namespace StarterAssets
         // timeout deltatime
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
+
+        // stamina tracking
+        private bool _jumppedThisFrame = false;
 
         // animation IDs
         private int _animIDSpeed;
@@ -144,6 +160,12 @@ namespace StarterAssets
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
+
+            // Get the HealthBar reference if not assigned
+            if (healthBar == null)
+            {
+                healthBar = FindObjectOfType<HealthBar>();
+            }
 
             AssignAnimationIDs();
 
@@ -248,6 +270,19 @@ namespace StarterAssets
             _animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
             if (_animationBlend < 0.01f) _animationBlend = 0f;
 
+            // Deduct stamina for running/sprinting
+            if (healthBar != null && _input.move != Vector2.zero && Grounded)
+            {
+                // Deduct stamina when moving
+                float staminaCost = (_input.sprint ? runStaminaCostPerSecond * 1.5f : runStaminaCostPerSecond) * Time.deltaTime;
+                healthBar.DeductStamina(staminaCost);
+            }
+            else if (healthBar != null && Grounded)
+            {
+                // Recover stamina when idle
+                healthBar.RecoverStamina(staminaRecoveryPerSecond * Time.deltaTime);
+            }
+
             // normalise input direction
             Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
 
@@ -302,6 +337,12 @@ namespace StarterAssets
                 // Jump
                 if (_input.jump && _jumpTimeoutDelta <= 0.0f)
                 {
+                    // Deduct stamina for jumping
+                    if (healthBar != null)
+                    {
+                        healthBar.DeductStamina(jumpStaminaCost);
+                    }
+
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
