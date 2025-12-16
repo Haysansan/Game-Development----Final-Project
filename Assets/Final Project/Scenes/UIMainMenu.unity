@@ -1002,6 +1002,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LogoRed
       objectReference: {fileID: 0}
+    - target: {fileID: 1000255661392571734, guid: 9a1a3c6e29ad7b14b9e3eef078049aca, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4557716609873097247, guid: 9a1a3c6e29ad7b14b9e3eef078049aca, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1185,6 +1189,10 @@ PrefabInstance:
     - target: {fileID: 1208712919897180118, guid: b1ce5c2e18728274ea4c8637ea0ea885, type: 3}
       propertyPath: m_Name
       value: Logo
+      objectReference: {fileID: 0}
+    - target: {fileID: 1208712919897180118, guid: b1ce5c2e18728274ea4c8637ea0ea885, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8717797757292942017, guid: b1ce5c2e18728274ea4c8637ea0ea885, type: 3}
       propertyPath: m_Pivot.x
