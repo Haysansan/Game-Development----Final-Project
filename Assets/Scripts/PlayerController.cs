@@ -1,50 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //Third Person Controller References
-    [SerializeField]
-    private Animator playerAnim;
+    [SerializeField] private Animator playerAnim;
 
+    [Header("Weapon")]
+    [SerializeField] private GameObject sword;
+    [SerializeField] private GameObject swordOnShoulder;
 
-    //Equip-Unequip parameters
-    [SerializeField]
-    private GameObject sword;
-    [SerializeField]
-    private GameObject swordOnShoulder;
     public bool isEquipping;
     public bool isEquipped;
-
-
-    //Blocking Parameters
     public bool isBlocking;
-
-    //Kick Parameters
-    public bool isKicking;
-
-    //Attack Parameters
     public bool isAttacking;
+    public bool isRolling;
+
     private float timeSinceAttack;
     public int currentAttack = 0;
 
+    [Header("Roll")]
+    public float rollCooldown = 1.2f;
+    private float lastRollTime;
 
-
-
-    private void Update()
+    void Update()
     {
         timeSinceAttack += Time.deltaTime;
 
         Attack();
-
-
         Equip();
         Block();
+        Roll();
     }
 
     private void Equip()
     {
+        if (isAttacking || isRolling) return;
+
         if (Input.GetKeyDown(KeyCode.R) && playerAnim.GetBool("Grounded"))
         {
             isEquipping = true;
@@ -52,74 +42,89 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     public void ActiveWeapon()
     {
-        if (!isEquipped)
-        {
-            sword.SetActive(true);
-            swordOnShoulder.SetActive(false);
-            isEquipped = !isEquipped;
-        }
-        else
-        {
-            sword.SetActive(false);
-            swordOnShoulder.SetActive(true);
-            isEquipped = !isEquipped;
-        }
+        bool equip = !isEquipped;
+        sword.SetActive(equip);
+        swordOnShoulder.SetActive(!equip);
+        isEquipped = equip;
     }
 
-    public void Equipped()
+    public void Equipped() // animation event
     {
         isEquipping = false;
     }
 
     private void Block()
     {
-        if (Input.GetKey(KeyCode.Mouse1) && playerAnim.GetBool("Grounded"))
+        if (Input.GetKey(KeyCode.Mouse1) && playerAnim.GetBool("Grounded") && !isRolling)
         {
-            playerAnim.SetBool("Block", true);
             isBlocking = true;
+            playerAnim.SetBool("Block", true);
         }
         else
         {
-            playerAnim.SetBool("Block", false);
             isBlocking = false;
+            playerAnim.SetBool("Block", false);
         }
+    }
+
+    private void Roll()
+    {
+        if (Input.GetKeyDown(KeyCode.Q) && playerAnim.GetBool("Grounded") && !isRolling)
+        {
+            if (Time.time > lastRollTime + rollCooldown)
+            {
+                // 1. Get movement input
+                float h = Input.GetAxisRaw("Horizontal");
+                float v = Input.GetAxisRaw("Vertical");
+                Vector3 inputDir = new Vector3(h, 0, v).normalized;
+
+                // 2. If moving, rotate to face that direction immediately
+                if (inputDir.magnitude > 0.1f)
+                {
+                    transform.rotation = Quaternion.LookRotation(inputDir);
+                }
+                // If no input, the player just rolls in their current forward direction
+
+                // 3. Start the roll
+                isRolling = true;
+                lastRollTime = Time.time;
+                playerAnim.SetTrigger("Roll");
+
+                // 4. Force stop block
+                isBlocking = false;
+                playerAnim.SetBool("Block", false);
+            }
+        }
+    }
+
+    public void EndRoll() // animation event
+    {
+        isRolling = false;
     }
 
     private void Attack()
     {
-
-        if (Input.GetMouseButtonDown(0) && playerAnim.GetBool("Grounded") && timeSinceAttack > 0.8f)
+        if (Input.GetMouseButtonDown(0) &&
+            playerAnim.GetBool("Grounded") &&
+            timeSinceAttack > 0.8f &&
+            isEquipped &&
+            !isRolling)
         {
-            if (!isEquipped)
-                return;
-
             currentAttack++;
             isAttacking = true;
 
-            if (currentAttack > 3)
-                currentAttack = 1;
+            if (currentAttack > 3) currentAttack = 1;
+            if (timeSinceAttack > 1f) currentAttack = 1;
 
-            //Reset
-            if (timeSinceAttack > 1.0f)
-                currentAttack = 1;
-
-            //Call Attack Triggers
             playerAnim.SetTrigger("Attack" + currentAttack);
-
-            //Reset Timer
-            timeSinceAttack = 0;
+            timeSinceAttack = 0f;
         }
-
-
-
-
-
     }
 
-    //This will be used at animation event
-    public void ResetAttack()
+    public void ResetAttack() // animation event
     {
         isAttacking = false;
     }

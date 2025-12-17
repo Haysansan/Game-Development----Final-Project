@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-#if ENABLE_INPUT_SYSTEM
+#if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
 
@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 namespace StarterAssets
 {
     [RequireComponent(typeof(CharacterController))]
-#if ENABLE_INPUT_SYSTEM
+#if ENABLE_INPUT_SYSTEM 
     [RequireComponent(typeof(PlayerInput))]
 #endif
     public class ThirdPersonController : MonoBehaviour
@@ -98,7 +98,7 @@ namespace StarterAssets
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
 
-#if ENABLE_INPUT_SYSTEM
+#if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
 #endif
         private Animator _animator;
@@ -122,12 +122,14 @@ namespace StarterAssets
             }
         }
 
-        // Player Controller Parameters;
+
+        //PlayerControllerParameters
         private PlayerController playerController;
 
         private void Awake()
         {
             playerController = gameObject.GetComponent<PlayerController>();
+
 
             // get a reference to our main camera
             if (_mainCamera == null)
@@ -143,7 +145,7 @@ namespace StarterAssets
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
-#if ENABLE_INPUT_SYSTEM
+#if ENABLE_INPUT_SYSTEM 
             _playerInput = GetComponent<PlayerInput>();
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
@@ -217,8 +219,12 @@ namespace StarterAssets
 
         private void Move()
         {
-            if (playerController.isEquipping)
-                return;
+            if (playerController.isEquipping ||
+        playerController.isBlocking ||
+        playerController.isAttacking ||
+        playerController.isRolling)
+        return;
+
 
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
@@ -288,6 +294,8 @@ namespace StarterAssets
 
         private void JumpAndGravity()
         {
+
+
             if (Grounded)
             {
                 // reset the fall timeout timer
@@ -307,7 +315,7 @@ namespace StarterAssets
                 }
 
                 // Jump
-                if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+                if (_input.jump && _jumpTimeoutDelta <= 0.0f && !playerController.isBlocking)
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
