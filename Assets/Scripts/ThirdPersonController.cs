@@ -235,14 +235,18 @@ namespace StarterAssets
 
         private void Move()
         {
+            bool wantsToMove = _input.move != Vector2.zero;
+            bool wantsToSprint = _input.sprint && wantsToMove;
+            bool canSprint = wantsToSprint && (healthBar == null || healthBar.HasStamina(runStaminaCostPerSecond * Time.deltaTime));
+
             // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            float targetSpeed = canSprint ? SprintSpeed : MoveSpeed;
 
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
             // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is no input, set the target speed to 0
-            if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+            if (!wantsToMove) targetSpeed = 0.0f;
 
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -271,16 +275,19 @@ namespace StarterAssets
             if (_animationBlend < 0.01f) _animationBlend = 0f;
 
             // Deduct stamina for running/sprinting
-            if (healthBar != null && _input.move != Vector2.zero && Grounded)
+            if (healthBar != null && Grounded)
             {
-                // Deduct stamina when moving
-                float staminaCost = (_input.sprint ? runStaminaCostPerSecond * 1.5f : runStaminaCostPerSecond) * Time.deltaTime;
-                healthBar.DeductStamina(staminaCost);
-            }
-            else if (healthBar != null && Grounded)
-            {
-                // Recover stamina when idle
-                healthBar.RecoverStamina(staminaRecoveryPerSecond * Time.deltaTime);
+                if (wantsToMove)
+                {
+                    // Deduct stamina when moving; sprinting drains a bit faster
+                    float staminaCost = (canSprint ? runStaminaCostPerSecond * 1.5f : runStaminaCostPerSecond) * Time.deltaTime;
+                    healthBar.DeductStamina(staminaCost);
+                }
+                else
+                {
+                    // Recover stamina when idle
+                    healthBar.RecoverStamina(staminaRecoveryPerSecond * Time.deltaTime);
+                }
             }
 
             // normalise input direction
@@ -337,19 +344,18 @@ namespace StarterAssets
                 // Jump
                 if (_input.jump && _jumpTimeoutDelta <= 0.0f)
                 {
-                    // Deduct stamina for jumping
-                    if (healthBar != null)
-                    {
-                        healthBar.DeductStamina(jumpStaminaCost);
-                    }
+                    bool canJump = healthBar == null || healthBar.TryConsumeStamina(jumpStaminaCost);
 
-                    // the square root of H * -2 * G = how much velocity needed to reach desired height
-                    _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-
-                    // update animator if using character
-                    if (_hasAnimator)
+                    if (canJump)
                     {
-                        _animator.SetBool(_animIDJump, true);
+                        // the square root of H * -2 * G = how much velocity needed to reach desired height
+                        _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+
+                        // update animator if using character
+                        if (_hasAnimator)
+                        {
+                            _animator.SetBool(_animIDJump, true);
+                        }
                     }
                 }
 
