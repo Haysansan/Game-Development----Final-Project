@@ -21,7 +21,7 @@ public class PlayerAudioController : MonoBehaviour
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
 
-        audioSource.spatialBlend = 0f; // 2D sound (set to 1f for 3D positional)
+        audioSource.spatialBlend = 0f; // 2D (set to 1f for 3D positional)
     }
 
     void Update()
