@@ -7,28 +7,43 @@ public class PlayerAudioController : MonoBehaviour
     public AudioClip[] waterSteps;
     public AudioClip[] roadSteps;
 
+    [Header("Action Clips")]
+    public AudioClip swordDrawClip;
+    public AudioClip swordSheathClip;
+
+    [Header("Jump Clips")]
+    public AudioClip jumpClip1;
+    public AudioClip jumpClip2;
+
     [Header("Settings")]
-    public float walkInterval = 0.5f;   // footsteps when walking
-    public float sprintInterval = 0.3f; // footsteps when sprinting
-    public Terrain terrain;             // assign your Terrain in Inspector
+    public float walkInterval = 0.5f;
+    public float sprintInterval = 0.3f;
+    public Terrain terrain;
 
     private AudioSource audioSource;
     private float stepTimer;
+    private bool swordDrawn = false;
+    private bool useFirstJump = true; // toggle between jump sounds
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
-
-        audioSource.spatialBlend = 0f; // 2D (set to 1f for 3D positional)
     }
 
     void Update()
     {
+        HandleMovementAudio();
+        HandleSwordAudio();
+        HandleJumpAudio();
+    }
+
+    void HandleMovementAudio()
+    {
         float move = Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical"));
 
-        if (move > 0.1f) // Player is moving
+        if (move > 0.1f)
         {
             float currentInterval = Input.GetKey(KeyCode.LeftShift) ? sprintInterval : walkInterval;
 
@@ -45,6 +60,43 @@ public class PlayerAudioController : MonoBehaviour
         }
     }
 
+    void HandleSwordAudio()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (!swordDrawn)
+            {
+                if (swordDrawClip != null)
+                    audioSource.PlayOneShot(swordDrawClip);
+                swordDrawn = true;
+            }
+            else
+            {
+                if (swordSheathClip != null)
+                    audioSource.PlayOneShot(swordSheathClip);
+                swordDrawn = false;
+            }
+        }
+    }
+
+    void HandleJumpAudio()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) // jump key
+        {
+            if (useFirstJump && jumpClip1 != null)
+            {
+                audioSource.PlayOneShot(jumpClip1);
+            }
+            else if (!useFirstJump && jumpClip2 != null)
+            {
+                audioSource.PlayOneShot(jumpClip2);
+            }
+
+            // flip toggle for next jump
+            useFirstJump = !useFirstJump;
+        }
+    }
+
     void PlayFootstep()
     {
         int textureIndex = GetMainTextureIndex(transform.position);
@@ -52,11 +104,10 @@ public class PlayerAudioController : MonoBehaviour
 
         switch (textureIndex)
         {
-            case 0: chosenArray = grassSteps; break; // Grass
-            case 1: chosenArray = roadSteps; break; // Road
-            case 2: chosenArray = waterSteps; break; // Water
+            case 0: chosenArray = grassSteps; break;
+            case 1: chosenArray = waterSteps; break;
+            case 2: chosenArray = roadSteps; break;
             default: chosenArray = grassSteps; break;
-
         }
 
         if (chosenArray != null && chosenArray.Length > 0)
