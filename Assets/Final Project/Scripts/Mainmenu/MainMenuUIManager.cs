@@ -5,6 +5,7 @@ using System.Collections;
 public class MainMenuUIManager : MonoBehaviour
 {
     [Header("Panels")]
+    public GameObject mainScreenPanel;
     public GameObject mainMenuPanel;
     public GameObject howToPlayPanel;
     public GameObject functionalityPanel;
@@ -16,13 +17,23 @@ public class MainMenuUIManager : MonoBehaviour
 
     void Start()
     {
-        ShowMainMenu();
+        ShowMainScreen();
         fadeImage.color = new Color(0, 0, 0, 0);
     }
 
     // ---------- SCREEN CONTROL ----------
+    public void ShowMainScreen()
+    {
+        mainScreenPanel.SetActive(true);
+        mainMenuPanel.SetActive(false);
+        howToPlayPanel.SetActive(false);
+        functionalityPanel.SetActive(false);
+        exitConfirmPanel.SetActive(false);
+    }
+
     public void ShowMainMenu()
     {
+        mainScreenPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
         howToPlayPanel.SetActive(false);
         functionalityPanel.SetActive(false);
@@ -31,6 +42,7 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void ShowHowToPlay()
     {
+        mainScreenPanel.SetActive(false);
         mainMenuPanel.SetActive(false);
         howToPlayPanel.SetActive(true);
         functionalityPanel.SetActive(false);
