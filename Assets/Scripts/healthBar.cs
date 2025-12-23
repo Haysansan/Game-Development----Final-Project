@@ -40,6 +40,17 @@ public class HealthBar : MonoBehaviour
         }
     }
 
+    // Added for compatibility with boss/other systems
+    public void SetMaxHealth(float value, bool clampCurrent = true)
+    {
+        maxHealth = Mathf.Max(1f, value);
+        if (clampCurrent)
+        {
+            _currentHealth = Mathf.Clamp(_currentHealth, 0f, maxHealth);
+        }
+        UpdateHealthUI();
+    }
+
     public void TakeDamage(float amount)
     {
         if (amount <= 0f) return;

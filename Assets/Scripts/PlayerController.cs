@@ -132,4 +132,16 @@ public class PlayerController : MonoBehaviour
     {
         isAttacking = false;
     }
+
+    public void TakeDamage(int damage)
+    {
+        // You can expand this with health system integration
+        Debug.Log("Player took " + damage + " damage!");
+        
+        // Play damage animation
+        if (playerAnim != null)
+        {
+            playerAnim.SetTrigger("TakeDamage");
+        }
+    }
 }
