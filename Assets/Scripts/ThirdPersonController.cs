@@ -105,7 +105,7 @@ namespace StarterAssets
         private float _fallTimeoutDelta;
 
         // stamina tracking
-        private bool _jumppedThisFrame = false;
+        //private bool _jumppedThisFrame = false;
 
         // animation IDs
         private int _animIDSpeed;
