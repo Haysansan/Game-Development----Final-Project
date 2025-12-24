@@ -21,7 +21,7 @@ Manages the weapon collider and damage:
 - Activates weapon for specific duration during attacks
 - Applies damage on collision with player
 - Applies knockback to player
-- Prevents multiple hits per attack
+- Prevents multiple hits per attack 
 
 ### 3. **TigerBossHealth.cs** - Health & Phase System
 Handles boss health and battle phases:
