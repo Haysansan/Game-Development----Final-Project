@@ -1,29 +1,30 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class HealthSystem : MonoBehaviour
 {
     [SerializeField] private float health = 100f;
+    [SerializeField] private float knockbackForce = 5f; // How far the enemy slides back
+    [SerializeField] private float stunDuration = 0.5f; // How long they stop moving
+
     private Animator enemyAnim;
+    private NavMeshAgent agent;
     private bool isDead = false;
 
     void Start()
     {
         enemyAnim = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
-    // Public function so TigerBossAI can check status
-    public bool IsDead()
-    {
-        return isDead;
-    }
+    public bool IsDead() => isDead;
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, Vector3 attackerPosition)
     {
         if (isDead) return;
 
         health -= damage;
-        Debug.Log("---------- HIT DETECTED ----------");
         Debug.Log($"<color=red>HIT!</color> {gameObject.name} lost {damage} HP. Remaining Health: {health}");
 
         if (health <= 0)
@@ -32,10 +33,37 @@ public class HealthSystem : MonoBehaviour
         }
         else
         {
-            if (enemyAnim != null)
+            if (enemyAnim != null) enemyAnim.SetTrigger("Hit");
+
+            // Stop current movement and apply knockback
+            StopAllCoroutines();
+            StartCoroutine(ApplyHitEffects(attackerPosition));
+        }
+    }
+
+    private IEnumerator ApplyHitEffects(Vector3 attackerPosition)
+    {
+        if (agent != null && agent.isActiveAndEnabled)
+        {
+            agent.isStopped = true;
+
+            // KNOCKBACK LOGIC
+            // Calculate direction away from the attacker
+            Vector3 knockbackDir = (transform.position - attackerPosition).normalized;
+
+            // Move the agent manually for a brief moment
+            float timer = 0;
+            while (timer < 0.2f) // Apply force over 0.2 seconds
             {
-                enemyAnim.SetTrigger("Hit");
+                agent.Move(knockbackDir * knockbackForce * Time.deltaTime);
+                timer += Time.deltaTime;
+                yield return null;
             }
+
+            // STUN LOGIC
+            yield return new WaitForSeconds(stunDuration);
+
+            if (!isDead) agent.isStopped = false;
         }
     }
 
@@ -44,26 +72,15 @@ public class HealthSystem : MonoBehaviour
         if (isDead) return;
         isDead = true;
 
-        Debug.Log("!!!!!!!!!! ENEMY HAS DIED !!!!!!!!!!");
-
-        // 1. STOP NAVIGATION & ROTATION
-        if (TryGetComponent(out NavMeshAgent agent))
+        if (agent != null)
         {
             agent.isStopped = true;
             agent.updateRotation = false;
         }
 
-        // 2. TRIGGER ANIMATION
-        if (enemyAnim != null)
-        {
-            enemyAnim.SetTrigger("Die");
-        }
+        if (enemyAnim != null) enemyAnim.SetTrigger("Die");
 
-        // 3. DISABLE PHYSICS
-        if (TryGetComponent(out Collider col))
-        {
-            col.enabled = false;
-        }
+        if (TryGetComponent(out Collider col)) col.enabled = false;
 
         Invoke("DisableAgent", 0.1f);
         Destroy(gameObject, 5f);
@@ -71,6 +88,6 @@ public class HealthSystem : MonoBehaviour
 
     private void DisableAgent()
     {
-        if (TryGetComponent(out NavMeshAgent agent)) agent.enabled = false;
+        if (agent != null) agent.enabled = false;
     }
 }
