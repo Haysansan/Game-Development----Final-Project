@@ -1,0 +1,49 @@
+..................................................................................................
+					Fristy Modular Assets 2 
+..................................................................................................
+
+This was designed with mobile in mind & nintendo switch. The scenes can run over 60fps on the dense scenes shown in examples on mid range
+mobile. Shaders used are CG code base shaders but Shader graph can be used. We chose CG for functionality & Reliabilty so we expect this to work nicely
+in every unity minimum of Unity 2017 or better.But these Texture are original 2048*2048 but inside the editor are set to 1024*1024 for mobile with no
+noticable defferents.
+ Here is our email: (https://ingamgoduka@gmail.com)
+ Here is our website: (https://iowprojects.com)
+
+1. 1 X Grass 5 polygons + 2 X Texture 512*512
+
+2. 7 X Rock  2 X Texture 2k
+
+3. 1 X Rock  2 X Texture 2k
+
+4. 2 X Trees 4 X Textures leaves&Bark 2k
+
+5. 5 Different shaders For Grass, Foliage, Rocks, Tree Bark.
+
+6. 12 tilable Textues 2k
+
+
+
+                           ........................
+				Rocks Details
+			   ........................
+
+1. Rock Shader has Defuse map(RGB) mix with AO map(A) on Alpha channel.
+	
+2. Some of the rocks Share Materials & Textures to max perfomance.
+
+3. Rock names & Polygons: 3_Rock_1 Tris: 418
+			  3_Rock_2 Tris: 510
+			  3_Rock_3 Tris: 432
+			  3_Rock_4 Tris: 318
+			  4_Rock   Tris: 276
+			  4_Rock_1 Tris: 524
+			  4_Rock_2 Tris: 420
+
+
+
+4. 3_1 _Tree: LOD0 = 2350; LOD1 = 813; LOD2 = 262 LOD = 4;
+   3_2_Tree: LOD0 = 1756; LOD1 = 322; LOD2 = 4;
+3_3_Tree: LOD0 = 2350; LOD1 = 813; LOD2 = 262 LOD = 4;
+   3_4_Tree: LOD0 = 1756; LOD1 = 322; LOD2 = 4;   
+
+5. DIRECTX 11,12;VULKAN; OPENGL CORE, OPENGLLES3;.NET4.x;
