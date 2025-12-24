@@ -1,0 +1,207 @@
+[33mcommit ec07fd9f78910d34f51565e0879e77a0c400c088[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mHowToPlay[m[33m, [m[1;31morigin/setha-vathanak[m[33m, [m[1;31morigin/HowToPlay[m[33m)[m
+Merge: 1b468a3 e8d6464
+Author: Setha Vathanak <154043526+obviouslynotdim@users.noreply.github.com>
+Date:   Wed Dec 24 13:00:51 2025 +0700
+
+    Merge branch 'HowToPlay' of https://github.com/Haysansan/Game-Development----Final-Project into HowToPlay
+
+[33mcommit 1b468a328fb909ed10e743e242e167998dd5d69b[m
+Author: Setha Vathanak <154043526+obviouslynotdim@users.noreply.github.com>
+Date:   Wed Dec 24 12:39:45 2025 +0700
+
+    teask npc: visal
+
+[33mcommit e8d646497f985f5f9af669f432b1babf37762c5d[m
+Merge: 4687002 ba625aa
+Author: Hong-Layeang <layeang.hong@student.cadt.edu.kh>
+Date:   Wed Dec 24 12:23:52 2025 +0700
+
+    Merge setha-vathanak into HowToPlay
+
+[33mcommit ba625aaaf697131d78f3bf80ad472026b4d1a261[m
+Author: Hong-Layeang <layeang.hong@student.cadt.edu.kh>
+Date:   Wed Dec 24 12:19:59 2025 +0700
+
+    npc model
+
+[33mcommit e875c8c87ce791cbf77e8e3911db1ffbc0f35115[m
+Author: Hong-Layeang <layeang.hong@student.cadt.edu.kh>
+Date:   Wed Dec 24 11:19:40 2025 +0700
+
+    npc model
+
+[33mcommit 4687002964bd8fcc3015b3f5efe23d7055044901[m
+Author: Visal KONG <viisall59@gmail.com>
+Date:   Wed Dec 24 11:15:00 2025 +0700
+
+    connect load scene MainMenu to Gameplay Scene
+
+[33mcommit b90e77809dd435ae81aa92dabbf6f68385d9469e[m
+Merge: f63b8b3 2e430f1
+Author: Hong-Layeang <layeang.hong@student.cadt.edu.kh>
+Date:   Wed Dec 24 10:03:08 2025 +0700
+
+    Merge setha-vathanak into HowToPlay
+
+[33mcommit 2e430f11f64d08a2fd6935e53f938ac8dfb69f87[m
+Author: Hong-Layeang <layeang.hong@student.cadt.edu.kh>
+Date:   Tue Dec 23 19:58:48 2025 +0700
+
+    Add SetMaxHealth method to HealthBar for boss/system compatibility
+
+[33mcommit 9ef6a8892a7f012665684aacd321cafa853109c1[m
+Author: Hong-Layeang <layeang.hong@student.cadt.edu.kh>
+Date:   Tue Dec 23 19:52:52 2025 +0700
+
+    boss system
+
+[33mcommit f63b8b3003badd7d5f158dcd37f73ee0da923cf6[m
+Author: Visal KONG <viisall59@gmail.com>
+Date:   Mon Dec 22 23:00:21 2025 +0700
+
+    Refactor UI panels into prefabs
+
+[33mcommit 669607724da2a71def9e6dd34e06fbd453c2832e[m[33m ([m[1;32mkong-visal[m[33m)[m
+Author: Hong-Layeang <layeang.hong@student.cadt.edu.kh>
+Date:   Mon Dec 22 15:45:36 2025 +0700
+
+    merged
+
+[33mcommit d44fe0caf5fd90d2d25c086641d0017f188f9e8f[m
+Merge: ee01865 792effe
+Author: Hong-Layeang <layeang.hong@student.cadt.edu.kh>
+Date:   Mon Dec 22 15:45:08 2025 +0700
+
+    Merge models branch into setha-vathanak
+
+[33mcommit 792effe05babfb160c55d579f20f026d51d4e113[m[33m ([m[1;31morigin/models[m[33m)[m
+Author: Hong-Layeang <layeang.hong@student.cadt.edu.kh>
+Date:   Mon Dec 22 15:39:32 2025 +0700
+
+    boss design
+
+[33mcommit ee018652fbdf41ae97cbc7d65dba72be1027bb7d[m[33m ([m[1;31morigin/dimdom[m[33m)[m
+Author: Setha Vathanak <154043526+obviouslynotdim@users.noreply.github.com>
+Date:   Mon Dec 22 15:19:00 2025 +0700
+
+    complete animation
+
+[33mcommit bef2bb4bcdb4bebc50f5bfb3858fb403b32aa88f[m
+Author: Visal KONG <viisall59@gmail.com>
+Date:   Mon Dec 22 13:59:03 2025 +0700
+
+    ADD mainScreen
+
+[33mcommit d876c6bccc0fd7e49269922ad5292dbdbdc06f24[m
+Author: Hong-Layeang <layeang.hong@student.cadt.edu.kh>
+Date:   Sun Dec 21 17:48:08 2025 +0700
+
+    fixing UI
+
+[33mcommit 5f60380aa729a66c779349d68eb59834ad04898d[m
+Author: Setha Vathanak <154043526+obviouslynotdim@users.noreply.github.com>
+Date:   Thu Dec 18 00:20:25 2025 +0700
+
+    full attack/dodge animation commit
+
+[33mcommit a2df4bfbdd01c10743287da7c2ecb1fc537c7bfa[m
+Author: Visal KONG <viisall59@gmail.com>
+Date:   Tue Dec 16 15:44:43 2025 +0700
+
+    fcm
+
+[33mcommit a9dfc60c5a9c711ea227529fbf69c4b752443ecd[m
+Author: Hong-Layeang <layeang.hong@student.cadt.edu.kh>
+Date:   Tue Dec 16 14:55:47 2025 +0700
+
+    nv
+
+[33mcommit ca6bb00f5070d7a0d26f4feea644bfbd401d9b2e[m
+Author: Setha Vathanak <154043526+obviouslynotdim@users.noreply.github.com>
+Date:   Tue Dec 16 14:41:22 2025 +0700
+
+    animation sword
+
+[33mcommit adecd501df7fb0e915b4846509c40baf9f008056[m
+Author: Setha Vathanak <154043526+obviouslynotdim@users.noreply.github.com>
+Date:   Mon Dec 15 23:20:41 2025 +0700
+
+    animation remake
+
+[33mcommit df756f69acde37709395d6b88844bfef9053a1c1[m
+Author: Hong-Layeang <layeang.hong@student.cadt.edu.kh>
+Date:   Mon Dec 15 21:35:00 2025 +0700
+
+    do models
+
+[33mcommit 0ff6a59af7506c490bd7a9ec5ab62785d3c6c266[m
+Author: Setha Vathanak <154043526+obviouslynotdim@users.noreply.github.com>
+Date:   Mon Dec 15 19:40:33 2025 +0700
+
+    read md update
+
+[33mcommit 545d1c5514984659f041869f7971dfe0cd273fb2[m
+Author: Setha Vathanak <154043526+obviouslynotdim@users.noreply.github.com>
+Date:   Mon Dec 15 19:36:29 2025 +0700
+
+    testing
+
+[33mcommit e6cac6b995b66798c60501b0bfd6dad437138a36[m
+Author: Setha Vathanak <154043526+obviouslynotdim@users.noreply.github.com>
+Date:   Sun Nov 30 18:21:46 2025 +0700
+
+    first version
+
+[33mcommit 63bcbd4f032e3bf3e90b2906d846d4a767282b63[m
+Author: Setha Vathanak <154043526+obviouslynotdim@users.noreply.github.com>
+Date:   Sun Nov 30 13:55:45 2025 +0700
+
+    read md reverb
+
+[33mcommit 56e1b79edc925eb4ea313a775ba214c171d17a7a[m[33m ([m[1;31morigin/eang-haysan2[m[33m, [m[1;32mmain[m[33m)[m
+Merge: 7c55ada 5cc4923
+Author: Haysansan <haysan.eang@student.cadt.edu.kh>
+Date:   Mon Nov 24 15:49:30 2025 +0700
+
+    Merge pull request #2 from Haysansan/eang-haysan
+    
+    Testing
+
+[33mcommit 5cc4923f532bdf6bd89d4b55d01470c449a43fd8[m
+Author: Haysansan <haysan.eang@student.cadt.edu.kh>
+Date:   Mon Nov 24 15:48:22 2025 +0700
+
+    Testing 2
+
+[33mcommit 8b47243c03375c4a5187055a56724f1fbd771712[m
+Author: Haysansan <haysan.eang@student.cadt.edu.kh>
+Date:   Mon Nov 24 15:46:30 2025 +0700
+
+    Testing
+
+[33mcommit 7c55ada9e9f2152b559bad7827dc23418a26609f[m[33m ([m[1;31morigin/test[m[33m, [m[1;31morigin/soun-sokhunmony[m[33m, [m[1;31morigin/kong-visal[m[33m, [m[1;31morigin/hong-layeang[m[33m, [m[1;31morigin/development[m[33m, [m[1;32msoun-sokhunmony[m[33m, [m[1;32msetha-vathanak[m[33m)[m
+Merge: c0e28e4 a287700
+Author: Haysansan <haysan.eang@student.cadt.edu.kh>
+Date:   Mon Nov 24 15:18:33 2025 +0700
+
+    Merge pull request #1 from Haysansan/kong-visal
+    
+    update README
+
+[33mcommit a2877005aa0902cd926641e6af9c08080ac96928[m
+Author: Visal KONG <viisall59@gmail.com>
+Date:   Mon Nov 24 15:16:00 2025 +0700
+
+    update README
+
+[33mcommit c0e28e4be455e2ca35a628f28418f125edd31a42[m
+Author: Haysansan <haysan.eang@student.cadt.edu.kh>
+Date:   Mon Nov 24 15:00:59 2025 +0700
+
+    Updated Structure Porject
+
+[33mcommit 206d2775898105163ec18b4a3b5e5d453251e3a4[m
+Author: Haysansan <haysan.eang@student.cadt.edu.kh>
+Date:   Mon Nov 24 14:28:04 2025 +0700
+
+    Initial Commit
