@@ -32,6 +32,10 @@ public class TigerBossAI : MonoBehaviour
     private BossState currentState = BossState.Idle;
     private bool hasPlayerInSight = false;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip bossMusic;
+    private bool musicTriggered = false; // Ensure boss music only triggers once
+
     public enum BossState { Idle, Patrol, Chase, Attack, Roar, Stun, Dead }
 
     private void OnEnable() => SetupComponents();
@@ -91,13 +95,21 @@ public class TigerBossAI : MonoBehaviour
     private void HandleIdleState()
     {
         navMeshAgent.velocity = Vector3.zero;
-        if (hasPlayerInSight) currentState = BossState.Chase;
+        if (hasPlayerInSight)
+        {
+            TriggerMusic();
+            currentState = BossState.Chase;
+        }
     }
 
     private void HandlePatrolState()
     {
         navMeshAgent.speed = patrolSpeed;
-        if (hasPlayerInSight) currentState = BossState.Chase;
+        if (hasPlayerInSight)
+        {
+            TriggerMusic();
+            currentState = BossState.Chase;
+        }
     }
 
     private void HandleChaseState(float distanceToPlayer)
@@ -205,5 +217,27 @@ public class TigerBossAI : MonoBehaviour
             return navMeshAgent.isOnNavMesh;
         }
         return false;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (animator != null) animator.SetTrigger("TakeDamage");
+    }
+
+    public bool IsInAttackRange()
+    {
+        if (player == null) return false;
+        return Vector3.Distance(transform.position, player.position) < attackRange;
+    }
+
+    public BossState GetCurrentState() => currentState;
+
+    private void TriggerMusic()
+    {
+        if (!musicTriggered && AudioManager.instance != null && bossMusic != null)
+        {
+            AudioManager.instance.ChangeMusic(bossMusic);
+            musicTriggered = true;
+        }
     }
 }
