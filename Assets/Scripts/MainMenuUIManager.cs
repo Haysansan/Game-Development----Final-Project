@@ -1,14 +1,17 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
 public class MainMenuUIManager : MonoBehaviour
 {
+    // 🔹 FLAG: detect if coming from gameplay
+    public static bool openMainMenuDirectly = false;
+    public static bool openHowToPlayDirectly = false;
+
     [Header("Panels")]
     public GameObject mainScreenPanel;
     public GameObject mainMenuPanel;
     public GameObject howToPlayPanel;
-    public GameObject functionalityPanel;
     public GameObject exitConfirmPanel;
 
     [Header("Fade")]
@@ -17,7 +20,21 @@ public class MainMenuUIManager : MonoBehaviour
 
     void Start()
     {
-        ShowMainScreen();
+        if (openHowToPlayDirectly)
+        {
+            ShowHowToPlay();
+            openHowToPlayDirectly = false;
+        }
+        else if (openMainMenuDirectly)
+        {
+            ShowMainMenu();
+            openMainMenuDirectly = false;
+        }
+        else
+        {
+            ShowMainScreen();
+        }
+
         fadeImage.color = new Color(0, 0, 0, 0);
     }
 
@@ -27,7 +44,6 @@ public class MainMenuUIManager : MonoBehaviour
         mainScreenPanel.SetActive(true);
         mainMenuPanel.SetActive(false);
         howToPlayPanel.SetActive(false);
-        functionalityPanel.SetActive(false);
         exitConfirmPanel.SetActive(false);
     }
 
@@ -36,7 +52,6 @@ public class MainMenuUIManager : MonoBehaviour
         mainScreenPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
         howToPlayPanel.SetActive(false);
-        functionalityPanel.SetActive(false);
         exitConfirmPanel.SetActive(false);
     }
 
@@ -45,7 +60,7 @@ public class MainMenuUIManager : MonoBehaviour
         mainScreenPanel.SetActive(false);
         mainMenuPanel.SetActive(false);
         howToPlayPanel.SetActive(true);
-        functionalityPanel.SetActive(false);
+        exitConfirmPanel.SetActive(false);
     }
 
     // ---------- EXIT FLOW ----------
@@ -68,7 +83,7 @@ public class MainMenuUIManager : MonoBehaviour
     // ---------- SAVE SETTINGS ----------
     void SaveSettings()
     {
-        PlayerPrefs.SetFloat("MusicVolume", 1f); // example
+        PlayerPrefs.SetFloat("MusicVolume", 1f);
         PlayerPrefs.SetInt("HasLaunched", 1);
         PlayerPrefs.Save();
     }

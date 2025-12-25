@@ -7,15 +7,8 @@ public class HowToPlayUIManager : MonoBehaviour
     public GameObject howToAttackPanel;
     public GameObject functionalityPanel;
 
-    public void ShowFunctionalityScreen()
-    {
-        howToAttackPanel.SetActive(false);
-        functionalityPanel.SetActive(true);
-    }
-
     public void ShowHowToAttackScreen()
     {
-        functionalityPanel.SetActive(false);
         howToAttackPanel.SetActive(true);
     }
 
