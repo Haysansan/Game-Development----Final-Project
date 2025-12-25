@@ -4,6 +4,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Animator playerAnim;
 
+    [SerializeField] private HealthBar healthBar;
+
     [Header("Weapon")]
     [SerializeField] private GameObject sword;
     [SerializeField] private GameObject swordOnShoulder;
@@ -21,9 +23,17 @@ public class PlayerController : MonoBehaviour
     public float rollCooldown = 1.2f;
     private float lastRollTime;
 
+    void Start()
+    {
+        if (healthBar == null)
+        {
+            healthBar = FindObjectOfType<HealthBar>();
+        }
+    }
+
     void Update()
     {
-        timeSinceAttack += Time.deltaTime;
+        timeSinceAttack += Time.deltaTime; // Existing line
 
         Attack();
         Equip();
@@ -31,7 +41,7 @@ public class PlayerController : MonoBehaviour
         Roll();
 
         // Apply root motion for rolling, attacking, blocking, or equipping
-        playerAnim.applyRootMotion = isRolling || isAttacking || isBlocking || isEquipping;
+        playerAnim.applyRootMotion = isRolling || isAttacking || isBlocking;
     }
 
 
@@ -78,8 +88,12 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q) && playerAnim.GetBool("Grounded") && !isRolling)
         {
+            // Check if we have enough stamina before allowing the roll
+            if (healthBar != null && !healthBar.HasStamina(20f)) return;
+
             if (Time.time > lastRollTime + rollCooldown)
             {
+
                 // 1. Get movement input
                 float h = Input.GetAxisRaw("Horizontal");
                 float v = Input.GetAxisRaw("Vertical");
@@ -96,6 +110,8 @@ public class PlayerController : MonoBehaviour
                 isRolling = true;
                 lastRollTime = Time.time;
                 playerAnim.SetTrigger("Roll");
+
+                if (healthBar != null) healthBar.DeductStamina(20f);
 
                 // 4. Force stop block
                 isBlocking = false;
@@ -117,6 +133,8 @@ public class PlayerController : MonoBehaviour
             isEquipped &&
             !isRolling)
         {
+            if (healthBar != null && !healthBar.HasStamina(10f)) return;
+
             currentAttack++;
             isAttacking = true;
 
@@ -125,6 +143,8 @@ public class PlayerController : MonoBehaviour
 
             playerAnim.SetTrigger("Attack" + currentAttack);
             timeSinceAttack = 0f;
+
+            if (healthBar != null) healthBar.DeductStamina(10f);
         }
     }
 
@@ -144,4 +164,5 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetTrigger("TakeDamage");
         }
     }
+
 }
