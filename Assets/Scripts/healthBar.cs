@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
@@ -38,19 +38,6 @@ public class HealthBar : MonoBehaviour
         {
             _regenTimer -= Time.deltaTime;
         }
-
-        RecoverStamina(20f * Time.deltaTime);
-
-        // Only log every 30 frames so the console doesn't explode
-        if (Time.frameCount % 30 == 0)
-        {
-            if (_currentStamina >= maxStamina)
-                Debug.Log("Stamina: FULL");
-            else if (_regenTimer > 0f)
-                Debug.Log($"Stamina: Waiting for Timer ({_regenTimer:F2}s remaining)");
-            else
-                Debug.Log("Stamina: Attempting to Recover...");
-        }
     }
 
     // Added for compatibility with boss/other systems
@@ -89,21 +76,13 @@ public class HealthBar : MonoBehaviour
 
     public bool TryConsumeStamina(float amount)
     {
-        if (_currentStamina >= amount)
-        {
-            _currentStamina -= amount;
+        if (amount <= 0f) return true;
+        if (_currentStamina < amount) return false;
 
-            // Only reset the regen delay if it's a "big" hit (like a jump or roll)
-            // If it's a small amount (running), we don't reset the delay
-            if (amount > 1f)
-            {
-                _regenTimer = staminaRegenDelay;
-            }
-
-            UpdateStaminaUI();
-            return true;
-        }
-        return false;
+        _currentStamina -= amount;
+        _regenTimer = staminaRegenDelay;
+        UpdateStaminaUI();
+        return true;
     }
 
     public void DeductStamina(float amount)
@@ -118,7 +97,7 @@ public class HealthBar : MonoBehaviour
     public void RecoverStamina(float amount)
     {
         if (amount <= 0f) return;
-        if (_regenTimer > 0f) return; // This waits for the 0.75s delay
+        if (_regenTimer > 0f) return;
 
         _currentStamina = Mathf.Min(maxStamina, _currentStamina + amount);
         UpdateStaminaUI();
