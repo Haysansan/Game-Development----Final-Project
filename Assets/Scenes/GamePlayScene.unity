@@ -1993,6 +1993,7 @@ MonoBehaviour:
   patrolSpeed: 1
   rotationSpeed: 3
   approachBuffer: 0.75
+  bossMusic: {fileID: 8300000, guid: a1653eafdbb1f46ca995c6e665d0ddfc, type: 3}
 --- !u!95 &950935031 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6900291415902281300, guid: 12ff3de1441ca4d48bb1d35244dd5bb7, type: 3}
@@ -5849,3 +5850,4 @@ SceneRoots:
   - {fileID: 8937411751175719805}
   - {fileID: 2026618315}
   - {fileID: 1549914510}
+  - {fileID: 857356879}
