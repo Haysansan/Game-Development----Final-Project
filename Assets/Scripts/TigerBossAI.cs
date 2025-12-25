@@ -34,6 +34,9 @@ public class TigerBossAI : MonoBehaviour
     private BossState currentState = BossState.Idle;
     private bool hasPlayerInSight = false;
 
+    [SerializeField] private AudioClip bossMusic;
+    private bool musicTriggered = false; // To make sure it only triggers once
+
     public enum BossState
     {
         Idle,
@@ -173,6 +176,7 @@ public class TigerBossAI : MonoBehaviour
 
         if (hasPlayerInSight)
         {
+            TriggerMusic();
             currentState = BossState.Chase;
         }
     }
@@ -183,6 +187,7 @@ public class TigerBossAI : MonoBehaviour
 
         if (hasPlayerInSight)
         {
+            TriggerMusic();
             currentState = BossState.Chase;
         }
     }
@@ -342,4 +347,12 @@ public class TigerBossAI : MonoBehaviour
     }
 
     public BossState GetCurrentState() => currentState;
+private void TriggerMusic()
+{
+    if (!musicTriggered && AudioManager.instance != null && bossMusic != null)
+    {
+        AudioManager.instance.ChangeMusic(bossMusic);
+        musicTriggered = true;
+    }
+}
 }
