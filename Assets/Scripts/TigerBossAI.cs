@@ -137,7 +137,8 @@ public class TigerBossAI : MonoBehaviour
 
         navMeshAgent.velocity = Vector3.zero;
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        bool isPlayingAttack = stateInfo.IsName("LightAttack") || stateInfo.IsName("HeavyAttack") || stateInfo.IsName("Roar");
+        // Match actual animator state names (lowercase) to avoid false idle flickers
+        bool isPlayingAttack = stateInfo.IsName("light attack") || stateInfo.IsName("heavy attack") || stateInfo.IsName("roar");
 
         if (!isPlayingAttack)
         {
@@ -156,7 +157,7 @@ public class TigerBossAI : MonoBehaviour
     {
         navMeshAgent.velocity = Vector3.zero;
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        if (!stateInfo.IsName("Roar") || stateInfo.normalizedTime >= 1.0f) currentState = BossState.Attack;
+        if (!stateInfo.IsName("roar") || stateInfo.normalizedTime >= 1.0f) currentState = BossState.Attack;
     }
 
     private void PerformLightAttack()
