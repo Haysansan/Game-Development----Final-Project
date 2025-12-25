@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: R e s u m e
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d7180f403b6421e4c8fccb6e5569317f, type: 2}
-  m_sharedMaterial: {fileID: 5726031052070435226, guid: d7180f403b6421e4c8fccb6e5569317f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -254,4 +254,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2361305038876762861}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5109022780991351633, guid: b19aa1cc6b694194790aad061f8b19b6, type: 3}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

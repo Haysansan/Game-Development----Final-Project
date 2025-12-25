@@ -120,7 +120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6795810643802683752}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6819801191161104777
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,8 +200,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: t u t o r i a l
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d7180f403b6421e4c8fccb6e5569317f, type: 2}
-  m_sharedMaterial: {fileID: 5726031052070435226, guid: d7180f403b6421e4c8fccb6e5569317f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
