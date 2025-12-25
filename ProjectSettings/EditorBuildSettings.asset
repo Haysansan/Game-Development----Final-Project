@@ -8,5 +8,26 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GamePlayScene.unity
     guid: 9ef8a044c4eb1ef4bbb2a6128a131f1b
+  - enabled: 1
+    path: Assets/Final Project/Scenes/UIMainMenu.unity
+    guid: 1061d50aff79c6042965e0a21674b4f9
+  - enabled: 1
+    path: Assets/Final Project/Scenes/Tutorial.unity
+    guid: 30c15896b5b6d3a49a628495b2fb9406
+  - enabled: 1
+    path: Assets/Final Project/Scenes/Defeat.unity
+    guid: 95f1defea39559049b47b9494b482b8a
+  - enabled: 1
+    path: Assets/Final Project/Scenes/Victory.unity
+    guid: c2f78d6c26247af46957ca663cc8ef69
+  - enabled: 1
+    path: Assets/Final Project/Scenes/BossFight.unity
+    guid: 5926806801ea4e94da631781a2c96019
+  - enabled: 1
+    path: Assets/Final Project/Scenes/Statistics.unity
+    guid: 4a9f3f16b7620ef4dae0dc8b850463ea
+  - enabled: 1
+    path: Assets/Final Project/Scenes/Credits.unity
+    guid: 9eba4eda0d78a3a4884e860b2f564a77
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
