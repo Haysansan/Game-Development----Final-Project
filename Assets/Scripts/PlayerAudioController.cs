@@ -4,12 +4,16 @@ public class PlayerAudioController : MonoBehaviour
 {
     [Header("Movement Sound")]
     public AudioClip footstepSound;
-    [Range(0f, 1f)] public float footstepVolume = 0.3f; // Lower this for quieter steps
+    [Range(0f, 1f)] public float footstepVolume = 0.3f;
 
     [Header("Action Clips")]
     public AudioClip swordDrawClip;
     public AudioClip swordSheathClip;
     [Range(0f, 1f)] public float actionVolume = 0.8f;
+
+    [Header("Attack Clips")]
+    public AudioClip attackClip1;
+    public AudioClip attackClip2;
 
     [Header("Jump Clips")]
     public AudioClip jumpClip1;
@@ -19,21 +23,19 @@ public class PlayerAudioController : MonoBehaviour
     public float walkInterval = 0.5f;
     public float sprintInterval = 0.3f;
 
-    // We will use two sources so footsteps can be quieter than jumps
     private AudioSource movementSource;
     private AudioSource actionSource;
-    
+
     private float stepTimer;
     private bool swordDrawn = false;
     private bool useFirstJump = true;
+    private bool useFirstAttack = true;
 
     void Start()
     {
-        // This part creates the Audio Sources for you if they don't exist
         movementSource = gameObject.AddComponent<AudioSource>();
         actionSource = gameObject.AddComponent<AudioSource>();
 
-        // Optional: Set spatial blend to 1.0 if you want 3D sound (quieter far away)
         movementSource.spatialBlend = 1.0f;
         actionSource.spatialBlend = 1.0f;
     }
@@ -43,6 +45,7 @@ public class PlayerAudioController : MonoBehaviour
         HandleMovementAudio();
         HandleSwordAudio();
         HandleJumpAudio();
+        HandleAttackAudio();
     }
 
     void HandleMovementAudio()
@@ -58,7 +61,6 @@ public class PlayerAudioController : MonoBehaviour
             {
                 if (footstepSound != null)
                 {
-                    // Randomize pitch slightly so it sounds more natural
                     movementSource.pitch = Random.Range(0.9f, 1.1f);
                     movementSource.PlayOneShot(footstepSound, footstepVolume);
                 }
@@ -88,6 +90,16 @@ public class PlayerAudioController : MonoBehaviour
             AudioClip clip = useFirstJump ? jumpClip1 : jumpClip2;
             if (clip != null) actionSource.PlayOneShot(clip, actionVolume);
             useFirstJump = !useFirstJump;
+        }
+    }
+
+    void HandleAttackAudio()
+    {
+        if (Input.GetMouseButtonDown(0)) // Left click
+        {
+            AudioClip clip = useFirstAttack ? attackClip1 : attackClip2;
+            if (clip != null) actionSource.PlayOneShot(clip, actionVolume);
+            useFirstAttack = !useFirstAttack;
         }
     }
 }

@@ -7,7 +7,7 @@ public class TigerBossAI : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private NavMeshAgent navMeshAgent;
     [SerializeField] private BossWeapon bossWeapon;
-    private HealthSystem healthSystem; // Added reference
+    private HealthSystem healthSystem;
 
     [Header("Detection")]
     [SerializeField] private float detectionRange = 50f;
@@ -25,6 +25,20 @@ public class TigerBossAI : MonoBehaviour
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float approachBuffer = 0.75f;
 
+    [Header("Music & Audio")]
+    [SerializeField] private AudioSource backgroundMusic;
+    [SerializeField] private AudioSource bossMusic;
+    [SerializeField] private AudioSource bossAudio;
+
+    // ✅ ADDED: Boss sound clips
+    [SerializeField] private AudioClip roarClip;
+    [SerializeField] private AudioClip lightAttackClip;
+    [SerializeField] private AudioClip heavyAttackClip;
+    [SerializeField] private AudioClip deathClip;
+
+    private bool bossMusicStarted = false;
+    private bool soundPlayed = false;
+
     private Transform player;
     private float lastHeavyAttackTime = 0f;
     private float lastLightAttackTime = 0f;
@@ -38,12 +52,15 @@ public class TigerBossAI : MonoBehaviour
 
     private void SetupComponents()
     {
-        healthSystem = GetComponent<HealthSystem>(); // Initialize reference
+        healthSystem = GetComponent<HealthSystem>();
         if (animator == null) animator = GetComponent<Animator>();
         if (navMeshAgent == null) navMeshAgent = GetComponent<NavMeshAgent>();
 
         if (navMeshAgent != null)
-            navMeshAgent.stoppingDistance = Mathf.Max(0f, Mathf.Min(stoppingDistance, attackRange - Mathf.Max(0.1f, approachBuffer)));
+            navMeshAgent.stoppingDistance = Mathf.Max(
+                0f,
+                Mathf.Min(stoppingDistance, attackRange - Mathf.Max(0.1f, approachBuffer))
+            );
 
         if (bossWeapon == null) bossWeapon = GetComponentInChildren<BossWeapon>();
 
@@ -55,10 +72,17 @@ public class TigerBossAI : MonoBehaviour
 
     private void Update()
     {
-        // MASTER SWITCH: If dead, stop all AI logic immediately
         if (healthSystem != null && healthSystem.IsDead())
         {
             currentState = BossState.Dead;
+
+            // ✅ Play death sound
+            if (bossAudio != null && deathClip != null && !soundPlayed)
+            {
+                bossAudio.PlayOneShot(deathClip);
+                soundPlayed = true;
+            }
+
             return;
         }
 
@@ -83,15 +107,26 @@ public class TigerBossAI : MonoBehaviour
         {
             FacePlayer();
         }
-    }
 
-    // ... Keep all your existing HandleState, PerformAttack, and FacePlayer methods exactly as they were ...
-    // Note: The FacePlayer() and HandleAttackState() are now protected by the IsDead() check in Update.
+        // ✅ Original sight trigger
+        if (hasPlayerInSight && !soundPlayed)
+        {
+            if (bossAudio != null)
+                bossAudio.Play();
+
+            soundPlayed = true;
+        }
+    }
 
     private void HandleIdleState()
     {
         navMeshAgent.velocity = Vector3.zero;
-        if (hasPlayerInSight) currentState = BossState.Chase;
+
+        if (hasPlayerInSight)
+        {
+            StartBossMusic();
+            currentState = BossState.Chase;
+        }
     }
 
     private void HandlePatrolState()
@@ -103,6 +138,7 @@ public class TigerBossAI : MonoBehaviour
     private void HandleChaseState(float distanceToPlayer)
     {
         navMeshAgent.speed = chaseSpeed;
+
         if (distanceToPlayer < attackRange)
         {
             navMeshAgent.velocity = Vector3.zero;
@@ -136,19 +172,26 @@ public class TigerBossAI : MonoBehaviour
         }
 
         navMeshAgent.velocity = Vector3.zero;
+
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        // Match actual animator state names (lowercase) to avoid false idle flickers
-        bool isPlayingAttack = stateInfo.IsName("light attack") || stateInfo.IsName("heavy attack") || stateInfo.IsName("roar");
+        bool isPlayingAttack =
+            stateInfo.IsName("light attack") ||
+            stateInfo.IsName("heavy attack") ||
+            stateInfo.IsName("roar");
 
         if (!isPlayingAttack)
         {
             float timeSinceRoar = Time.time - lastRoarTime;
-            if (timeSinceRoar > roarCooldown && Random.value > 0.6f) PerformRoar();
+            if (timeSinceRoar > roarCooldown && Random.value > 0.6f)
+                PerformRoar();
             else
             {
-                if (Time.time - lastHeavyAttackTime > heavyAttackCooldown && Random.value > 0.5f) PerformHeavyAttack();
-                else if (Time.time - lastLightAttackTime > lightAttackCooldown) PerformLightAttack();
-                else animator.SetFloat("Speed", 0);
+                if (Time.time - lastHeavyAttackTime > heavyAttackCooldown && Random.value > 0.5f)
+                    PerformHeavyAttack();
+                else if (Time.time - lastLightAttackTime > lightAttackCooldown)
+                    PerformLightAttack();
+                else
+                    animator.SetFloat("Speed", 0);
             }
         }
     }
@@ -157,38 +200,57 @@ public class TigerBossAI : MonoBehaviour
     {
         navMeshAgent.velocity = Vector3.zero;
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        if (!stateInfo.IsName("roar") || stateInfo.normalizedTime >= 1.0f) currentState = BossState.Attack;
+
+        if (!stateInfo.IsName("roar") || stateInfo.normalizedTime >= 1f)
+            currentState = BossState.Attack;
     }
 
+    // ✅ Added sound for light attack
     private void PerformLightAttack()
     {
         animator.SetTrigger("LightAttack");
         lastLightAttackTime = Time.time;
         if (bossWeapon != null) bossWeapon.ActivateWeapon(0.5f, 15);
+
+        if (bossAudio != null && lightAttackClip != null)
+            bossAudio.PlayOneShot(lightAttackClip);
     }
 
+    // ✅ Added sound for heavy attack
     private void PerformHeavyAttack()
     {
         animator.SetTrigger("HeavyAttack");
         lastHeavyAttackTime = Time.time;
         if (bossWeapon != null) bossWeapon.ActivateWeapon(0.8f, 30);
+
+        if (bossAudio != null && heavyAttackClip != null)
+            bossAudio.PlayOneShot(heavyAttackClip);
     }
 
+    // ✅ Added sound for roar
     private void PerformRoar()
     {
         animator.SetTrigger("Roar");
         lastRoarTime = Time.time;
         currentState = BossState.Roar;
+
+        if (bossAudio != null && roarClip != null)
+            bossAudio.PlayOneShot(roarClip);
     }
 
     private void FacePlayer()
     {
-        Vector3 directionToPlayer = (player.position - transform.position).normalized;
-        directionToPlayer.y = 0; // Keep rotation upright
-        if (directionToPlayer != Vector3.zero)
+        Vector3 dir = (player.position - transform.position).normalized;
+        dir.y = 0;
+
+        if (dir != Vector3.zero)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+            Quaternion targetRot = Quaternion.LookRotation(dir);
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                targetRot,
+                Time.deltaTime * rotationSpeed
+            );
         }
     }
 
@@ -196,6 +258,7 @@ public class TigerBossAI : MonoBehaviour
     {
         if (navMeshAgent == null || !navMeshAgent.isActiveAndEnabled) return false;
         if (navMeshAgent.isOnNavMesh) return true;
+
         NavMeshHit hit;
         if (NavMesh.SamplePosition(transform.position, out hit, searchRadius, NavMesh.AllAreas))
         {
@@ -205,5 +268,18 @@ public class TigerBossAI : MonoBehaviour
             return navMeshAgent.isOnNavMesh;
         }
         return false;
+    }
+
+    private void StartBossMusic()
+    {
+        if (bossMusicStarted) return;
+
+        bossMusicStarted = true;
+
+        if (backgroundMusic != null && backgroundMusic.isPlaying)
+            backgroundMusic.Stop();
+
+        if (bossMusic != null)
+            bossMusic.Play();
     }
 }
