@@ -7,6 +7,8 @@ TagManager:
   - CinemachineTarget
   - RockSet_01
   - Boss
+  - Enemy
+  - Npc
   layers:
   - Default
   - TransparentFX
