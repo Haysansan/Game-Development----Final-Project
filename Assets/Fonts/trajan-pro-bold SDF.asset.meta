@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/New Terrain.asset.meta
+guid: f1709e2a845b9414b8ee22b3d8cb88dd
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 15600000
+========
+guid: d786f09cf85cd5e42a5bce4537235b9e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+>>>>>>>> audio_integration:Assets/Fonts/trajan-pro-bold SDF.asset.meta
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

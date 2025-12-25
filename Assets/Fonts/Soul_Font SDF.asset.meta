@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/New Terrain 1.asset.meta
+guid: f9a94c4fb2cfa504f871879522a18738
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 15600000
+========
+guid: d7180f403b6421e4c8fccb6e5569317f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+>>>>>>>> audio_integration:Assets/Fonts/Soul_Font SDF.asset.meta
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
