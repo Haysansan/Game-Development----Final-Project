@@ -1,0 +1,175 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8805421652492019472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5132379802074067587}
+  m_Layer: 0
+  m_Name: TwinTwoStairs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5132379802074067587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8805421652492019472}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.43, y: 3.133, z: 49.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4410793749700209724}
+  - {fileID: 3816978270683214711}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &325682607164006478
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5132379802074067587}
+    m_Modifications:
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957832020272547457, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_Name
+      value: TwoStairs (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7649456043573567639, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_VersionIndex
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286268600120283582, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_VersionIndex
+      value: 17
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+--- !u!4 &3816978270683214711 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+  m_PrefabInstance: {fileID: 325682607164006478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &958112866300952325
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5132379802074067587}
+    m_Modifications:
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.0879998
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957832020272547457, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_Name
+      value: TwoStairs
+      objectReference: {fileID: 0}
+    - target: {fileID: 7649456043573567639, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_VersionIndex
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286268600120283582, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+      propertyPath: m_VersionIndex
+      value: 17
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+--- !u!4 &4410793749700209724 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3494141406190867257, guid: 4bc82f4c7443af84d8b8a35a1e9f013e, type: 3}
+  m_PrefabInstance: {fileID: 958112866300952325}
+  m_PrefabAsset: {fileID: 0}
