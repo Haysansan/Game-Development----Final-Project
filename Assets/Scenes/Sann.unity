@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: d6b76e42608df0e468cecc7c45f980a7
+  m_OcclusionCullingData: {fileID: 36300000, guid: 7057b8c8bac5599478ffd054ed75da19, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -228,8 +228,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1409623257}
-  offset: {x: 0, y: 3, z: -6}
+  distance: 6
+  height: 3
+  mouseSensitivity: 3
   smoothSpeed: 10
+  minY: -30
+  maxY: 60
 --- !u!43 &120455490
 Mesh:
   m_ObjectHideFlags: 0
@@ -742,7 +746,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &481409439
 AudioListener:
   m_ObjectHideFlags: 0
@@ -810,8 +814,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 481409438}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.07877649, y: -0.4727444, z: 0.042014007, w: 0.8766652}
-  m_LocalPosition: {x: 87.563705, y: 5.0357494, z: 52.291733}
+  m_LocalRotation: {x: 0.0408519, y: 0.27439782, z: 0.012045081, w: -0.9606727}
+  m_LocalPosition: {x: 91.8868, y: 5.650421, z: 35.683678}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2100,7 +2104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  gravity: -5
+  gravity: -10
+  jumpHeight: 5
 --- !u!136 &1409623254
 CapsuleCollider:
   m_ObjectHideFlags: 0
