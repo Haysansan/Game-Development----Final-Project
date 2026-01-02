@@ -1,5 +1,3 @@
----
-
 # 🗡️ The Blade: Twin Vengeance
 
 > **A high-octane, third-person action experience built in Unity.** > Master the art of the blade, execute fluid combos, and survive the challenge.
@@ -86,5 +84,3 @@ git clone https://github.com/Haysansan/Game-Development----Final-Project.git
 ## 📝 License
 
 This project is developed for educational purposes as a Final Project. It is free to use and modify for learning.
-
----
