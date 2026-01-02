@@ -8,9 +8,9 @@
 
 To give you a look at the game flow, here are the core screens:
 
-| **Main Menu** | **Game Over (Lose)** | **Victory (Win)** |
+| **Main Menu** | **Victory (Win)** | **Game Over (Lose)** |
 | :---: | :---: | :---: |
-| [https://github.com/user-attachments/assets/5f70ad18-1e0a-40fe-b6c0-1d3bd940643e](https://github.com/user-attachments/assets/56ede91c-2013-4fd8-9675-625aa8df2d32) | https://github.com/user-attachments/assets/56ede91c-2013-4fd8-9675-625aa8df2d32 | https://github.com/user-attachments/assets/63b1e57d-a6d2-46a5-8c79-cd235a0b1b25 |
+| https://github.com/user-attachments/assets/56ede91c-2013-4fd8-9675-625aa8df2d32 | https://github.com/user-attachments/assets/5f70ad18-1e0a-40fe-b6c0-1d3bd940643e | https://github.com/user-attachments/assets/63b1e57d-a6d2-46a5-8c79-cd235a0b1b25 |
 
 ---
 
@@ -37,7 +37,7 @@ In **The Blade: Twin Vengeance**, you take control of a master swordsman. The ga
 | **Dodge / Roll** | `Q` |
 | **Jump** | `Space` |
 | **Heal** | `H` |
-| **Equip / Un-equip** | `R` |
+| **Equip / unEquip** | `R` |
 | **Interact** | `F` |
 
 ---
