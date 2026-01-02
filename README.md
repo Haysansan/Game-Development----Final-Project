@@ -58,7 +58,7 @@ In **The Blade: Twin Vengeance**, you take control of a master swordsman. The ga
 ---
 
 ## 👥 Credits & Attribution
-* **Core Contributor**: Sethavathanak Sao
+* **Core Contributor:** **Sao Sethavathanak**
 * **Development Team:** [Your Team Name/Members]
 * **Assets Used:**
     * [Unity Starter Assets](https://assetstore.unity.com/) (Third Person Controller)
@@ -67,4 +67,4 @@ In **The Blade: Twin Vengeance**, you take control of a master swordsman. The ga
 ---
 
 ## 📝 License
-This project is for educational purposes as part of a Final Project.
+This project is developed for educational purposes as a Final Project. It is free to use and modify for learning.
