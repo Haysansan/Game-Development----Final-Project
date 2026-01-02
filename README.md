@@ -12,6 +12,9 @@ To give you a look at the game flow, here are the core screens:
 | :---: | :---: | :---: |
 | https://github.com/user-attachments/assets/56ede91c-2013-4fd8-9675-625aa8df2d32 | https://github.com/user-attachments/assets/5f70ad18-1e0a-40fe-b6c0-1d3bd940643e | https://github.com/user-attachments/assets/63b1e57d-a6d2-46a5-8c79-cd235a0b1b25 |
 
+Pausing Image :
+<img width="1619" height="888" alt="Pause-Esc" src="https://github.com/user-attachments/assets/2b5839ae-d9ec-4850-8730-fb8461a11c9b" />
+
 ---
 
 ## 🎮 Game Overview
