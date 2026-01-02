@@ -38,7 +38,7 @@ To run the project locally in the Unity Editor, follow these steps:
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [https://github.com/yourusername/the-blade-twin-vengeance.git](https://github.com/yourusername/the-blade-twin-vengeance.git)
+    git clone [[https://github.com/yourusername/the-blade-twin-vengeance.git](https://github.com/yourusername/the-blade-twin-vengeance.git)](https://github.com/Haysansan/Game-Development----Final-Project.git)
     ```
 2.  **Open in Unity:** Launch Unity Hub and open the project. Recommended version: **Unity 2022.3 LTS** (or your specific version).
 3.  **Load the Scene:** Navigate to `Assets/Final Project` and open the **Main** scene.
@@ -62,4 +62,4 @@ To run the project locally in the Unity Editor, follow these steps:
 ---
 
 ## 📝 License
-This project is for educational purposes as part of a Final Project (Free to use).
+This project is for educational purposes as part of a Final Project (Free to use), Big Contriuter "Sethavathanak Sao".
