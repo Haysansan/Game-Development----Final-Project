@@ -1,7 +1,3 @@
-This is a solid start for a game project README! It covers the essentials: what the game is, how to play it, and how to set it up.
-
-To make this truly stand out for a portfolio or a team collaboration, I've refined the formatting, fixed the broken links in the installation section, and added a **Technical Details** section. This helps potential employers or collaborators understand the "how" behind your code.
-
 ---
 
 # 🗡️ The Blade: Twin Vengeance
@@ -78,7 +74,7 @@ git clone https://github.com/Haysansan/Game-Development----Final-Project.git
 
 ## 👥 Credits & Attribution
 
-* **Core Contributor:** **Sethavathanak Sao**
+* **Core Contributor:** **Sao Sethavathanak**
 * **Assets Used:**
 * [Unity Starter Assets](https://assetstore.unity.com/) (Third Person Controller)
 * [TextMesh Pro](https://unity.com/visual-search/textmesh-pro) for UI rendering.
@@ -92,10 +88,3 @@ git clone https://github.com/Haysansan/Game-Development----Final-Project.git
 This project is developed for educational purposes as a Final Project. It is free to use and modify for learning.
 
 ---
-
-### Tips for a better README:
-
-* **Screenshots:** Adding 2–3 screenshots of your environment or UI makes the repo much more inviting.
-* **Code Snippets:** If you're proud of a specific script (like the combo logic), consider adding a small code block under a "Code Highlights" section.
-
-**Would you like me to help you draft a "Code Highlights" section for your combat logic or explain how to set up the GitHub Pages for a WebGL demo?**
