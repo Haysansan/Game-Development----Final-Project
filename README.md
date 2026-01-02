@@ -1,26 +1,34 @@
 # 🗡️ The Blade: Twin Vengeance
 
-> **A high-octane, third-person action experience built in Unity.** > Master the art of the blade, execute fluid combos, and survive the challenge.
+> A high-octane, third-person action experience built in Unity. Master the art of the blade, execute fluid combos, and survive the challenge.
+
+---
+
+## 🎥 Gameplay Gallery
+
+To give you a look at the game flow, here are the core screens:
+
+| **Main Menu** | **Game Over (Lose)** | **Victory (Win)** |
+| :---: | :---: | :---: |
+| https://github.com/user-attachments/assets/5f70ad18-1e0a-40fe-b6c0-1d3bd940643e | https://github.com/user-attachments/assets/56ede91c-2013-4fd8-9675-625aa8df2d32 | https://github.com/user-attachments/assets/63b1e57d-a6d2-46a5-8c79-cd235a0b1b25 |
 
 ---
 
 ## 🎮 Game Overview
-
 In **The Blade: Twin Vengeance**, you take control of a master swordsman. The gameplay focuses on high-stakes melee combat, requiring precision timing for dodges and rhythmic combo execution to take down powerful enemies.
 
 ### Core Features
-
 * **Dynamic Combat:** 3-hit combo system featuring light and heavy attacks.
 * **Tactical Defense:** Active blocking and roll-mechanics to avoid damage.
 * **Fluid Movement:** Integrated sprinting and jumping for exploration and positioning.
-* **Expandable Architecture:** Built with modular systems (State Machines) ready for future upgrades and skill trees.
+* **Polished UI:** Custom-designed menus, health bars, and win/loss states.
 
 ---
 
 ## ⌨️ Controls
 
 | Action | Key / Input |
-| --- | --- |
+| :--- | :--- |
 | **Move** | `W` `A` `S` `D` |
 | **Look / Camera** | `Mouse` |
 | **Attack Combo** | `Left Click` |
@@ -34,53 +42,25 @@ In **The Blade: Twin Vengeance**, you take control of a master swordsman. The ga
 
 ---
 
-## 🛠️ Technical Stack & Architecture
+## 🛠️ Installation & Setup
 
-* **Engine:** Unity 2022.3 LTS
-* **Scripting:** C# (Object-Oriented Programming)
-* **Input System:** Unity New Input System package for seamless controller/keyboard support.
-* **Architecture:** * **State-Driven Combat:** Uses a **Finite State Machine (FSM)** to handle transitions between idling, moving, attacking, and dodging.
-* **Modular Ability System:** Easy to swap or add new sword skills via Scriptable Objects.
-
-
-
----
-
-## 🚀 Installation & Setup
-
-To run the project locally in the Unity Editor, follow these steps:
-
-1. **Clone the Repository:**
-```bash
-git clone https://github.com/Haysansan/Game-Development----Final-Project.git
-
-```
-
-
-2. **Open in Unity:** Launch **Unity Hub**, click "Add", and select the project folder.
-3. **Project Version:** Ensure you are using **Unity 2022.3 LTS** to avoid compatibility issues.
-4. **Load the Scene:** Navigate to `Assets/Final Project` and open the **Main** scene.
-5. **Play:** Press the **Play** button at the top of the Unity Editor.
-
----
-
-## 🎥 Gameplay Demo
-
-> *Tip: To add a preview, record a short clip of your combat system and drag the GIF directly into this README.*
+1.  **Clone the Repository:**
+    ```bash
+    git clone [https://github.com/yourusername/the-blade-twin-vengeance.git](https://github.com/yourusername/the-blade-twin-vengeance.git)
+    ```
+2.  **Open in Unity:** Recommended version: **Unity 2022.3 LTS**.
+3.  **Load the Scene:** Navigate to `Assets/Final Project` and open the **Main** scene.
+4.  **Play:** Press the **Play** button at the top of the Unity Editor.
 
 ---
 
 ## 👥 Credits & Attribution
-
-* **Core Contributor:** **Sao Sethavathanak**
+* **Development Team:** [Your Team Name/Members]
 * **Assets Used:**
-* [Unity Starter Assets](https://assetstore.unity.com/) (Third Person Controller)
-* [TextMesh Pro](https://unity.com/visual-search/textmesh-pro) for UI rendering.
-
-
+    * [Unity Starter Assets](https://assetstore.unity.com/) (Third Person Controller)
+    * [TextMesh Pro](https://unity.com/visual-search/textmesh-pro) for UI rendering.
 
 ---
 
 ## 📝 License
-
-This project is developed for educational purposes as a Final Project. It is free to use and modify for learning.
+This project is for educational purposes as part of a Final Project.
